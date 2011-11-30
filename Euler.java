@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -122,67 +123,8 @@ public class Euler {
 	}
 	
 
-	private void num25() {
-		// TODO Auto-generated method stub
-		
-	}
 
-	private void num20() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void num16() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void num14() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void num13() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void num12() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void num11() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void num9() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void num8() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void num7() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void num6() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void num5() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public static int fib(int n){
+	public static long fib(int n){
 		int x = 1, y = 1, z = 0;
 		if (n == 0){
 			return 0;
@@ -192,6 +134,24 @@ public class Euler {
 		}
 		for (int i = 2; i < n; i++){
 			z = x + y;
+			x = y;
+			y = z;
+		}
+		return z;
+	}
+	
+	public static BigInteger fib (BigInteger n){
+		if (n.longValue() == 0){
+			return BigInteger.ZERO;
+		} 
+		else if (n.longValue() <= 2){
+			return BigInteger.ONE;
+		}
+		BigInteger x = BigInteger.ONE;
+		BigInteger y = BigInteger.ONE;
+		BigInteger z = BigInteger.ZERO;
+		for (int i = 2; i < n.longValue(); i++){
+			z = x.add(y);
 			x = y;
 			y = z;
 		}
@@ -426,18 +386,18 @@ public class Euler {
 		return true;
 	}
 	
-	public long num1(){
+	public void num1(){
 		solution = 0;
 		for (int i = 0; i < 1000; i++){
 			if (i%3 == 0 || i%5 == 0){
 				solution += i;
 			}
 		}
-		return solution;
 	}
 	
-	public long num2(){ 
-		int f = 0, i = 0;
+	public void num2(){ 
+		long f = 0;
+		int i = 0;
 		solution = 0;
 		while (f < 4000000){
 			f = fib(i);
@@ -446,10 +406,9 @@ public class Euler {
 			}
 			i++;
 		}
-		return solution;
 	}
 	
-	public long num3(){
+	public void num3(){
 		long x = 600851475143l;
 //		long x = 13195l;
 		ArrayList<Integer> pFactors = new ArrayList<Integer>();
@@ -459,10 +418,9 @@ public class Euler {
 			}
 		}
 		solution = pFactors.get(pFactors.size()-1);
-		return solution;
 	}
 	
-	public long num4(){
+	public void num4(){
 		ArrayList<Integer> pals = new ArrayList<Integer>();
 		for (int i = 100; i < 1000; i++){
 			for (int j = 100; j < 1000; j++){
@@ -472,33 +430,29 @@ public class Euler {
 			}
 		}
 		solution = Collections.max(pals);
-		return solution;
 	}
 
-	public long num10(){
+	public void num10(){
 		solution = 0;
 		for (int i = 2; i < 2000000; i++){
 			if (isPrime(i))
 				solution += i;
 		}
-		return solution;
 	}
 	
-	public long num15(){
+	public void num15(){
 		solution = choose(40, 20);
-		return solution;
 	}
 	
-	public static int num17(){
+	public void num17(){
 		String result = ""; 
 		for (int i = 1; i <= 1000; i++){
 			result += numberReader(i);
 		}
-		System.out.println(result);
-		return result.length();
+		solution = result.length();
 	}
 	
-	public static int num18(){
+	public void num18(){
 		int[][] triangle = {    {75},
 								{95, 64},
 								{17, 47, 82},
@@ -521,10 +475,10 @@ public class Euler {
 			}
 		}
 		
-		return triangle[0][0];
+		solution = triangle[0][0];
 	}
 
-	public static int num19(){
+	public void num19(){
 		int countSun = 0, day = 0, month = 0, year = 1900;
 		boolean first = true;
 		int feb;
@@ -547,10 +501,10 @@ public class Euler {
 			}
 			
 		}
-		return countSun;
+		solution = countSun;
 	}
 	
-	public static int num21(){
+	public void num21(){
 		int sum = 0;
 		ArrayList<Integer> amiNums = new ArrayList<Integer>();
 		ArrayList<int[]> diviSums = new ArrayList<int []>();
@@ -572,14 +526,14 @@ public class Euler {
 		for (int j = 0; j < amiNums.size(); j++){
 			sum += amiNums.get(j);
 		}
-		return sum;
+		solution = sum;
 	}
 	
-	public static long num22() throws FileNotFoundException{
+	public void num22() throws FileNotFoundException{
 		Scanner names = new Scanner(new File ("names.txt"));
 		names.useDelimiter(",");
 		ArrayList<String> nameList = new ArrayList<String>();
-		long sum = 0; 
+		solution = 0; 
 		while(names.hasNext()){
 			String n = names.next();
 			nameList.add(n.substring(1, n.length()-1));
@@ -588,13 +542,13 @@ public class Euler {
 		String ni;
 		for (int i = 0; i < nameList.size(); i++){
 			ni = nameList.get(i);
-			sum += (aVal(ni) * (i+1));
+			solution += (aVal(ni) * (i+1));
 		}
-		return sum;
 	}
 	
-	public static int num23(){
-		int sum = 0, addend;
+	public void num23(){
+		int addend;
+		solution = 0;
 		boolean flag;
 		int[] all = new int[28123];
 		for (int i = 0; i < 28123; i++){
@@ -604,7 +558,6 @@ public class Euler {
 		for (int i = 1; i < 28123; i++){	
 			if (greekType(i) > 0){
 				abNums.add(i);
-				System.out.print("" + i + ":");
 			}
 		}
 		System.out.println();
@@ -617,15 +570,14 @@ public class Euler {
 			}
 		}
 		for (int i = 0; i < 28123; i++){
-			sum += all[i];
-			System.out.print("" + all[i] + ":");
+			solution += all[i];
 		}
-		System.out.println();
-		return sum;
 	}
 	
-	public static int num24(){
-		int result = 0, k, l, temp;
+	public void num24(){
+		int k, l, temp;
+		solution = 0;
+		String tempSol = "";
 		int [] perm = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9} ;
 		for (int i = 0; i < 999999; i++){
 			k = largeOrdered(perm);
@@ -635,9 +587,75 @@ public class Euler {
 			perm[l] = temp;
 			revArr(perm, k+1);
 		}
-		for (int j : perm) System.out.print(j);
-		System.out.println();
-		return result;
+		for (int j : perm) {
+			tempSol += j;
+		}
+		solution = Long.parseLong(tempSol);
+	}
+	
+	private void num25() {
+		solution = 0;
+		BigInteger fibNum = BigInteger.ZERO;
+		int i = 0;
+		while (fibNum.toString().length() < 1000){
+			fibNum = fib(BigInteger.valueOf(++i));
+		}
+		solution = i;
+	}
+
+	private void num20() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void num16() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void num14() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void num13() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void num12() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void num11() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void num9() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void num8() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void num7() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void num6() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void num5() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	public String toString(){
