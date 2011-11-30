@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
@@ -635,7 +636,6 @@ public class Euler {
 
 	private void num9() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	private void num8() {
@@ -649,13 +649,32 @@ public class Euler {
 	}
 
 	private void num6() {
-		// TODO Auto-generated method stub
-		
+		int sqSum = 0, sumsqs = 0;
+		for (int i = 0; i <= 100; i++){
+			sumsqs += (int)Math.pow(i, 2);
+			sqSum += i;
+		}
+		sqSum = (int)Math.pow(sqSum, 2);
+		solution = sqSum - sumsqs;
 	}
 
 	private void num5() {
-		// TODO Auto-generated method stub
-		
+		solution = 0;
+		ArrayList<Integer> test = new ArrayList<Integer>(
+				Arrays.asList(20, 19, 18, 17, 16, 13, 11));
+		boolean found = false;
+		while (!found){
+			solution += 2520;
+			for (int i : test){
+				if (solution % i != 0){
+					found = false;
+					break;
+				}
+				else if(solution % i == 0 && i == 11){
+					found = true;
+				}
+			}
+		}
 	}
 	
 	public String toString(){
