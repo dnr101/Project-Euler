@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-
+/*
+ * This is a client class to instantiate a Euler object and solve a user 
+ * defined Euler problem using the JOptionPane object from the swing library.
+ */
 public class RunEuler {
 	public static void main(String args[]){
 		final int COMPLETED_PROBLEMS = 25;

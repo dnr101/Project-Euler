@@ -5,7 +5,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
-
+/*
+ * This is a hobby project to solve (some of) the first 25 problems of 
+ * the Project Euler website. The class has been designed as a semi OOP
+ * project, with Euler as an instantiable object that can solve itself 
+ * when given the appropriate command. Some problems remain unsolved.
+ * -D.R. 
+ */
 public class Euler {
 	
 	private int problem;
